@@ -31,6 +31,7 @@ const signup = async (req, res, next) => {
     const user = await User.create({username, email, password})
     res.status(201).json({
       message: "User created successfully",
+      status: "success",
       data: {user}
     })
     // Create a new user instance using the User model
@@ -56,7 +57,7 @@ const login = async (req, res, next) => {
     if(!email || !password){
       return res.status(400).json({
         status: "error",
-        message: "Both Email and Password are required"
+        message: "Please provide email and password"
       })
     }
 
